@@ -1,0 +1,15 @@
+---
+- hosts: all
+  remote_user: root
+  become: yes
+  gather_facts: True
+
+  tasks:            
+    
+    - name: start Celery
+      shell: |
+        . /home/sam/project/env.sh
+        . /home/sam/project/venv/bin/activate
+        cd /home/sam/project/zusha
+        python3 /home/sam/project/zusha/manage.py migrate django_celery_results
+        celery -A zusha beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler

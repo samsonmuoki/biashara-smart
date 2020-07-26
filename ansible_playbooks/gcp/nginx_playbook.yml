@@ -1,0 +1,35 @@
+---
+- hosts: all
+  tasks:
+    - name: ensure nginx is at the latest version
+      apt: name=nginx state=latest
+      become: yes
+    
+    - name: free port 80 to reassign ownership to nginx
+      command: fuser -k 80/tcp
+      become: yes
+
+    - name: start nginx
+      service:
+          name: nginx
+          state: started
+      become: yes
+
+    - name: copy the nginx config file and restart nginx
+      copy:
+        src: /home/sam/Desktop/Biashara/configuration_files/nginx/biashara_smart_app
+        dest: /etc/nginx/sites-available
+      become: yes
+
+    - name: create symbolic link
+      file:
+        src: /etc/nginx/sites-available/biashara_app
+        dest: /etc/nginx/sites-enabled/default
+        state: link
+      become: yes
+    
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+      become: yes

@@ -1,0 +1,7 @@
+ansible
+Django
+Fabric3
+flake8
+gunicorn
+psycopg2
+pytest

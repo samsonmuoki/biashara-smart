@@ -1,0 +1,14 @@
+---
+- hosts: all
+  remote_user: root
+  become: yes
+  gather_facts: True
+
+  tasks:            
+          
+          - name: start gunicorn
+            shell: |
+              . /home/sam/project/env.sh
+              . /home/sam/project/venv/bin/activate
+              cd /home/sam/project/biashara_smart
+              gunicorn --daemon --workers 3 --bind unix:/home/sam/project/biashara_smart/biashara_smart.sock biashara_smart.wsgi
