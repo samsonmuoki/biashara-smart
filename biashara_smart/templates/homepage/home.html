@@ -1,0 +1,243 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <style>
+        body{
+            height: fit-content;
+            /* background-color: yellow; */
+        }
+        #header{
+            height: 50px;
+            width: 100%;
+            /* margin: auto; */
+            /* padding: 5px; */
+            padding-top: 20px;
+            font-size: x-large;
+            color: white;
+            text-align: center;
+            background-color: blueviolet;
+        }
+        #logo{
+            padding: 5px;
+            font-weight: bolder;
+        }
+        #menu-bar{
+            background-color: white;
+            color: gray;
+            text-align: center;
+            height: 50px;
+            padding-top: 3px 0 3px 0;
+            width: 100%;
+            margin: auto;
+        }
+        #logo{
+            float: left;
+            width: 20%;
+            font-size: large;
+        }
+        #menu{
+            float: left;
+            width: 60%;
+        }
+        ul#menu-links li{
+            display: inline;
+            padding: 5px 5px 0px 5px;
+            font-size: x-large;
+        }
+        ul#menu-links li:hover{
+            background-color: greenyellow;
+            padding: 5px;
+            font-weight: bold;
+        }
+        ul#menu-links li a{
+            text-decoration: none;
+        }
+
+        #login-signup{
+            float: left;
+            width: 15%;
+            padding: 10px 0px 0px 0px;
+            /* padding: 5px; */
+        }
+        #login-signup a{
+            background-color: orangered;
+            margin: 5px;
+            padding: 5px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+        }
+        #login-signup a:hover{
+            background-color: tomato;
+            padding: 8px;
+            font-weight: bold;
+        }
+        #images{
+            width: 100%;
+            background-color: whitesmoke;
+            height: 600px;
+        }
+        #image-text{
+            float: left;
+            width: 50%;
+            padding-top: 40px;
+            text-align: left;
+            /* background-color: green; */
+        }
+        #image-text-header{
+            font-size: xx-large;
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding: 30px;
+            color: black;
+        }
+        #image-text-message{
+            font-size: large;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding-left: 30px;
+            padding-right: 10px;
+        }
+        #image-text-signup{
+            font-size: large;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin-top: 30px;
+            margin-left: 30px;
+            width: 150px;
+            padding: 5px;
+            text-align: center;
+            background-color: rgb(255, 123, 0);
+            border-radius: 5px;
+            color: white;
+        }
+        #image-text-signup:hover{
+            padding: 8px;
+            background-color: tomato;
+            font-weight: bold;
+        }
+        #image-photo{
+            float: left;
+            width: 50%;
+        }
+        #description{
+            background-color: white;
+            height: 300px;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+        #card-one, #card-two, #card-three{
+            float: left;
+            height: 300px;
+            width: 31%;
+            border-radius: 3px;
+            border-color: blue;
+            border-style: solid;
+            border-width: 5px 0 0 0;
+            box-shadow: 0 2px 2px 2px grey;
+            padding: 5px;
+        }
+        #card-two{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        #card-image{
+            width: 100%;
+            height: 100px;
+            /* background-color: thistle; */
+        }
+        #card-text-header{
+            font-weight: bold;
+            font-size: x-large;
+            padding: 5px;
+            padding: 5px;
+        }
+
+    </style>
+    <title>
+        biashara-smart
+    </title>
+    <body>
+
+        <div id="header">
+            We have tools and advice to help you make smart financial decisions running your business
+        </div>
+        <div id="menu-bar">
+            <div id="logo">
+                <em>BIASHARA <br> SMART</em>
+            </div>
+            <div id="menu">
+                <ul id="menu-links">
+                    <li>
+                        <a href=""> HOME </a>
+                    </li>
+                    <li>
+                        <a href=""> LINK 1 </a>
+                    </li>
+                    <li>
+                        <a href=""> LINK 2 </a>
+                    </li>
+                    <li>
+                        <a href=""> LINK 3 </a>
+                    </li>
+                    <li>
+                        <a href=""> LINK 4 </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="login-signup">
+                <a href=""> Login </a>
+                <a href=""> Signup for free</a>  
+            </div>
+        </div>
+        <div id="images">
+            <div id="image-text">
+                <div id="image-text-header">Business Management Software Tailored for your <em>BIASHARA</em></div> 
+                <div id="image-text-message">
+                    When you’re on top of your money, life is good. We'll help you
+                    effortlessly manage your business finances in one place and 
+                    maximize your profits by running your business more efficiently.
+                    
+                </div>
+                <div id="image-text-signup">Signup for free</div>
+            </div>
+            <div id="image-photo">
+                <img src="{% static "images/phone_graph1.png" %}" alt="view"  width="100%" height="590px">
+            </div>
+
+        </div>
+        <div id="description">
+            <div id="card-one">
+                <div id="card-image">
+                    <img src="{% static "images/account_icon.png" %}" alt="view"  width="100px" height="90px">
+                </div> 
+                <div id="card-text">
+                    <div id="card-text-header">BUSINESS AUTOMATION</div>
+                    <div id="card-text-body">
+                        Enjoy freedom like never before using our system that automates
+                        the manual business processes in your biashara.
+                    </div>
+                </div>
+            </div>
+            <div id="card-two">
+                <div id="card-image">
+                    <img src="{% static "images/record_image.png" %}" alt="view"  width="120px" height="90px">
+                </div>
+                <div id="card-text-header">AUTOMATED INVENTORY TRACKING</div>
+                <div id="card-text-body">Get accurate updates of your inventory levels with each sales and purchases made</div>
+            </div>
+            <div id="card-three">
+                <div id="card-image">
+                    <img src="{% static "images/sales_icon2.png" %}" alt="view"  width="100px" height="90px">
+                </div>
+                <div id="card-text-header">SALES REPORTS</div>
+                <div id="card-text-body">
+                    Get detailed financial reports of how your business is performing regularly. <br>
+                    Know what goods are selling most and those that sell slowly.
+                </div>
+            </div>
+        </div>
+        <div id="partners">
+        </div>
+    </body>
+</html>
