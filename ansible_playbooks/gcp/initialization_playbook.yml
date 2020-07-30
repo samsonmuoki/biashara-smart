@@ -1,4 +1,9 @@
 ---
+# - hosts: local
+# - name: load ssh key
+#   shell: |
+#       ssh-add ~/.ssh/id_rsa
+
 - hosts: all
   remote_user: root
   become: yes
@@ -71,6 +76,8 @@
             git:
               repo: 'https://github.com/samsonmuoki/biashara-smart.git'
               dest: project/
+              accept_hostkey: yes
+            become: no
 
           - name: Copy env.sh to server
             copy:
