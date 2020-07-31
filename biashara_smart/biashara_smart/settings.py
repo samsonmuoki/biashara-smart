@@ -25,22 +25,27 @@ SECRET_KEY = '7gfw-^3h)$bz6z)it45px=of+($3q%6ss(wl50jriz1mpr+or3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'biasharasmart.tk',
+    'www.biasharasmart.tk',
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'common.apps.CommonConfig',
-    'clients.apps.ClientsConfig',
-    'homepage.apps.HomepageConfig',
-    'liquorshops.apps.LiquorshopsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'common.apps.CommonConfig',
+    'clients.apps.ClientsConfig',
+    'homepage.apps.HomepageConfig',
+    'liquorshops.apps.LiquorshopsConfig',
+    'rental_houses.apps.RentalHousesConfig',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +128,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+LOGIN_REDIRECT_URL = 'homepage:my_businesses'

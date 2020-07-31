@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>biashara smart rent management</title>
+        <style>
+            #login-signup a{
+                background-color: orangered;
+                margin: 5px;
+                padding: 5px;
+                border-radius: 5px;
+                color: white;
+                text-decoration: none;
+            }
+            #login-signup a:hover{
+                background-color: tomato;
+                padding: 8px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>BIASHARA SMART RENT MANAGEMENT</h1>
+
+        <div id="login-signup">
+            <a href="{% url 'rental_houses:my_property' %}"> LOGIN </a>
+        </div>
+    </body>
+</html>

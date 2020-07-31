@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            biashara smart rent management
+        </title>
+        <style>
+            #content{
+                background-color: white;
+                padding: 5px;
+                height: 1000px;
+            }
+            #col-left{
+                background-color: whitesmoke;
+                padding: 5px;
+                margin: 5px;
+            }
+            #added-property-header{
+                text-align: center;
+                padding: 10px;
+                border-style: solid;
+                border-color: grey;
+                border-width: 0 0 3px 0;
+                margin: 3px;
+            }
+            #owned-premises{
+                padding: 5px;
+                background-color: white;
+                margin: 5px;
+            }
+            #single-premises{
+                padding: 10px;
+                margin: 10px;
+                background-color: aliceblue;
+                /* color: white; */
+            }
+            #owned-premises a{
+                text-decoration: none;
+            }
+            #single-premises:hover{
+                background-color: turquoise;
+                font-weight: bold;
+                /* color: white; */
+            }
+            #no-premises{
+                padding: 20px;
+                background-color: turquoise;
+                margin: 10px;
+                border-radius: 5px;
+                text-align: center;
+                font-size: large;
+            }
+            #no-premises:hover{
+                font-weight: bold;
+                padding: 25px;
+            }
+            #col-right{
+                background-color: whitesmoke;
+                padding: 5px;
+                margin: 5px;
+            }
+            #add-new-property-header{
+                text-align: center;
+                padding: 10px;
+                border-style: solid;
+                border-color: grey;
+                border-width: 0 0 3px 0;
+                margin: 3px;
+            }
+            #add-rental-building{
+                padding: 30px;
+                margin: auto;
+            }
+            #add-rental-building a{
+                text-decoration: none;
+            }
+            #add-rental-building-link{
+                background-color: white;
+                padding: 10px;
+                border-radius: 5px;
+                margin: 5px 5px 10px 5px;
+                color: grey;
+                text-align: center;
+            }
+            #add-rental-building-link:hover{
+                padding: 12px;
+                font-weight: bold;
+                background-color: greenyellow;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>RENTAL HOUSE MANAGEMENT</h1>
+        <div id="content">
+            <div id="col-left">
+                <div id="added-property-header">MY PREMISES</div>
+                <div id="owned-premises">
+                    {% if my_premises %}
+                        {% for premises in my_premises %}
+                            <a href="{% url 'rental_houses:view_premises' premises.id %}">
+                            <div id="single-premises">
+                                {{ premises.name }} | {{ premises.location }}
+                            </div>
+                        </a>
+                        {% endfor %}
+                    {% else %}
+                        <div id="no-premises">
+                            YOU DON'T HAVE ANY PREMISES AVAILABLE. <br />
+                            Please add the premises you own first.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div id="col-right">
+                <div id="add-new-property-header">ADD NEW PREMISES</div>
+                <div id="add-rental-building">
+                    <a href="{% url 'rental_houses:add_appartment' %}">
+                        <div id="add-rental-building-link">Add Appartment</div>
+                    </a>
+                    <!-- <a href="">
+                        <div id="add-rental-building-link">Add Bungalow</div>
+                    </a> -->
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>biashara smart</title>
+    <style>
+        .signup-form{
+            width: 300px;
+            box-shadow: 0 0 3px ;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-form">
+        <form method="POST" action="">
+            <input class="input-box" name="username" type="text" placeholder="Phone Number">
+            <input class="input-box" name="firstname" type="text" placeholder="first name">
+            <input class="input-box" name="lastname" type="text" placeholder="last name">
+            <input class="input-box" name="email" type="email" placeholder="Email">
+            <input class="input-box" name="password1" type="password" placeholder="Password">
+            <input class="input-box" name="password2" type="password" placeholder="Confirm Password">
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>biashara smart signup</title>
+        <style>
+            /* css here */
+        </style>
+    </head>
+    <body>
+        <h1>THANKS FOR OPTING TO JOIN US</h1>
+        <div id="form-details">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="SUBMIT">
+            </form>
+        </div>
+    </body>
+</html>

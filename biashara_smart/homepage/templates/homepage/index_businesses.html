@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            biashara smart my business
+        </title>
+        <style>
+            #businesses{
+                padding: 30px;
+                margin: auto;
+                background-color: whitesmoke;
+            }
+            #businesses a{
+                text-decoration: none;
+            }
+            #business{
+                background-color: white;
+                padding: 10px;
+                border-radius: 5px;
+                margin: 5px 5px 10px 5px;
+                color: grey;
+
+            }
+            #business:hover{
+                padding: 12px;
+                font-weight: bold;
+                background-color: greenyellow;
+            }
+        </style>
+    </head>
+    <body>
+        {% if user_type == "Client" %}
+            <h1>ADD A BUSINESS</h1>
+            <div id="businesses">
+                <a href="{% url 'rental_houses:my_property' %}"><div id="business">RENTAL PREMISES</div></a>
+                <a href=""><div id="business">LIQUOR SHOP</div></a>
+                <a href=""><div id="business">BOUTIQUE</div></a>
+                <a href=""><div id="business">HARDWARE SHOP</div></a>
+                <a href=""><div id="business">ELECTRONICS SHOP</div></a>
+            </div>
+        {% else %}
+            I'm an employee, Show me the business I'm employed at please
+        {% endif %}
+    </body>
+</html>

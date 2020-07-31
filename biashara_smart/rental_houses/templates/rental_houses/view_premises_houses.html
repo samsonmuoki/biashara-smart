@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>biashara smart premises houses</title>
+    <style>
+      #premises-name {
+        padding: 10px;
+        background-color: purple;
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bold;
+        color: white;
+      }
+      #premises-houses {
+        padding: 5px;
+        background-color: whitesmoke;
+      }
+      #house {
+        padding: 10px;
+        background-color: white;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="premises-name">{{ premises.name }}</div>
+    <div id="premises-houses">
+      {% if available_units %} {% for unit in available_units %}
+      <div id="house">
+        <div id="house-number">{{ unit.unit_number }}</div>
+        <div id="house-rent">{{ unit.rent }}</div>
+        <div id="occupied-status"></div>
+        <div id="house-tenant">{{ unit.tenant_name }}</div>
+        <a href="">
+          <div id="view-button">
+            <a
+              href="{% url 'rental_houses:view_single_unit' premises.id unit.id %}"
+              >VIEW</a
+            >
+          </div>
+        </a>
+      </div>
+      {% endfor %} {% else %} NO UNITS ARE AVAILABLE {% endif %}
+    </div>
+  </body>
+</html>

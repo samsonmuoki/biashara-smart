@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            biashara smart my premises
+        </title>
+        <style>
+            #header{
+                background-color: purple;
+                padding: 20px;
+                color: white;
+                font-size: xx-large;
+                font-weight: bold;
+                text-align: center;
+            }
+            #premises-summary{
+                padding: 5px;
+                background-color: aliceblue;
+            }
+            #income-per-month, #number-of-houses{
+                background-color: white;
+                padding: 10px;
+                margin: 5px;
+                /* font-weight: bold; */
+                font-size: large;
+                text-align: center;
+            }
+            #add-house{
+                background-color: greenyellow;
+                padding: 5px;
+                margin-top: 5px;
+            }
+            #add-house a{
+                text-decoration: none;
+            }
+            #view-houses-available, #add-house-link{
+                background-color: white;
+                padding: 10px;
+                margin: 5px;
+                text-align: center;
+            }
+            #view-houses-available:hover, #add-house-link:hover{
+                background-color: orangered;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">{{ premises.name }}</div>
+        <div id="premises-summary">
+            <div id="income-per-month">INCOME PER MONTH: Ksh 2.3 M </div>
+            <div id="number-of-houses">
+                NUMBER OF HOUSES:
+                {% if available_houses %}
+                    {{ no_of_houses }}
+                {% else %}
+                    <em>NO HOUSES HAVE BEEN ADDED TO THIS PREMISES!</em>
+                {% endif %}
+            </div>
+        </div>
+        <div id="add-house">
+            <a href="{% url 'rental_houses:add_house' premises.id %}">
+                <div id="add-house-link">ADD A HOUSE</div>
+            </a>
+            <a href="{% url 'rental_houses:view_premises_houses' premises.id %}">
+                <div id="view-houses-available">VIEW HOUSES IN THIS PREMISES</div>
+            </a>
+        </div>
+        <div id="premises-analysis">
+            GRAPH HERE <br />
+            DATA ANALYSIES HERE <br />
+        </div>
+    </body>
+</html>

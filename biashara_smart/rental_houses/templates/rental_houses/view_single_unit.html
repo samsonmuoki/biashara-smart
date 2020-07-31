@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>biasharasmart</title>
+  </head>
+  <body>
+    <!-- <div id="content">{{ unit }}</div> -->
+    <div id="content">{{ unit.unit_number }}</div>
+    <div id="content">{{ unit.rent }}</div>
+    <div id="content">{{ unit.tenant_name }}</div>
+    <div id="content">{{ unit.tenant_id_no }}</div>
+    <div id="content">{{ unit.tenant_phone }}</div>
+    <div id="content">{{ unit.tenant_email }}</div>
+    <p>
+      <a href="{% url 'rental_houses:add_rent_payment' premises.id unit.id %}"
+        >ADD RENT</a
+      >
+    </p>
+  </body>
+</html>

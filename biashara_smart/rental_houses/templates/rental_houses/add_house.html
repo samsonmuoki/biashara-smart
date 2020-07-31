@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            biashara smart add house
+        </title>
+        <style>
+            #houses-box-area{
+                padding: 10px;
+                background-color: whitesmoke;
+                /* width: fit-content;
+                float: left; */
+            }
+            #houses-box-area a{
+                text-decoration: none;
+                color: black;
+            }
+            #house-details{
+                padding: 15px;
+                border-radius: 3px;
+                background-color: white;
+                margin: 5px auto 5px auto;
+                text-align: center;
+
+            }
+            #house-details:hover{
+                background-color: aliceblue;
+                /* background-color: greenyellow; */
+            }
+            #house-number{
+                padding: 5px;
+                border-style: solid;
+                border-color: turquoise;
+                border-width: 0 0 3px 0;
+                font-size: large;
+                font-weight: bold;
+            }
+            #house-rent{
+                font-style: italic;
+                padding: 5px;
+            }
+            #occupied-status{
+                padding: 1px;
+            }
+            #occupied-yes{
+                background-color: green;
+                color: white;
+                padding: 5px;
+            }
+            #not-occupied{
+                background-color: orangered;
+                color: white;
+                padding: 5px;
+                font-weight: bold;
+            }
+            #not-occupied:hover{
+                background-color: orange;
+            }
+            #house-tenant{
+                padding: 5px;
+                background-color: antiquewhite;
+            }
+        </style>
+        <body>
+            <h1>ENTER HOUSE DETAILS</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="ADD">
+            </form>
+
+            <h3>HOUSES IN THIS {{ premises.building_type }}</h3>
+            {% if available_houses %}
+                <div id="houses-box-area">
+                    {% for house in available_houses %}
+                        <a href="">
+                            <div id="house-details">
+                                <div id="house-number"> {{ house.house_number }}</div>
+                                <div id="house-rent"> RENT: Ksh {{ house.rent }} </div>
+                                <div id="occupied-status">
+                                    {% if house.tenant_name %}
+                                        <div id="occupied-yes">OCCUPIED</div>
+                                    {% else %}
+                                        <div id="not-occupied">NOT OCCUPIED</div>
+                                    {% endif %}
+                                </div>
+                                <div id="house-tenant"> TENANT: {{ house.tenant_name }} </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div id="houses-not-available-message">
+                    NO HOUSES ARE AVAILABLE IN THIS PREMISES
+                </div>
+            {% endif %}
+        </body>
+    </head>
+</html>

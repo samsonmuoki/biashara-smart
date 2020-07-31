@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            biashara smart rent management
+        </title>
+        <style>
+            /* css here */
+        </style>
+    </head>
+    <body>
+        <h1>ADD NEW RENTAL PREMISES</h1>
+        <div id="content">
+            <div id="add-appartment">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="SUBMIT">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
