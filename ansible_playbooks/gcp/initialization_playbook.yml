@@ -138,6 +138,7 @@
         repo: "https://github.com/samsonmuoki/biashara-smart.git"
         dest: project/
         version: start-rent-management-app
+        force: yes
       #   accept_hostkey: yes
       # become: no
 
