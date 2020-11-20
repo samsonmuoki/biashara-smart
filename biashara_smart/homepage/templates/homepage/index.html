@@ -37,7 +37,7 @@
                 margin: auto 2px;
                 color: rgb(121, 134, 134);
                 /* color: white; */
-                padding: 4px;
+                padding: 2px;
                 border-radius: 3px;
                 font-size: medium;
                 font-weight: bold;
@@ -48,19 +48,20 @@
             #cards{
                 /* background-color: yellow; */
                 width: 100%;
-                height: 820px;
+                height: 900px;
             }
             #card{
                 float: left;
-                height: 250px;
+                height: 270px;
                 width: 100%;
                 border-radius: 3px;
-                border-color: blue;
+                border-color: rgb(153, 0, 255);
                 border-style: solid;
                 border-width: 5px 0 0 0;
                 box-shadow: 0 2px 2px 2px grey;
-                /* padding: 15px; */
-                margin: 8px 3px 10px 3px;
+                margin: 8px 0px 10px 0px;
+                /* color: rgb(246, 248, 248);
+                background-color: rgb(200, 159, 230); */
             }
             #card-image{
                 /* width: 100%; */
@@ -84,18 +85,21 @@
                 height: 200px;
                 /* width: 100%; */
                 /* margin: auto; */
-                padding: 30px;
+                padding: 20px;
                 font-size: x-large;
                 color: white;
                 text-align: center;
                 margin-top: 2px;
-                background-color: grey;
+                /* background-color: grey; */
+                background-color: rgb(68, 86, 190);
             }
             #playstore-link{
                 padding: 5px;
-                background-color: greenyellow;
+                /* background-color: greenyellow; */
+                background-color: rgb(78, 47, 255);
+                /* background-color: rgb(47, 68, 255); */
                 /* color: white; */
-                color: grey;
+                color: white;
                 font-size: large;
                 width: 150px;
                 margin: auto;
@@ -104,7 +108,8 @@
             #playstore-link:hover{
                 padding: 10px;
                 font-weight: bold;
-                background-color: greenyellow;
+                /* background-color: rgb(78, 47, 255); */
+                background-color: rgb(47, 68, 255);
             }
         </style>
     </head>
@@ -112,14 +117,16 @@
         <div id="header">
             <div id="mobile-menu-btn">
                 <!-- MENU <br> BTN   -->
-                --- <br> --- <br> ---
+                <!-- --- <br> --- <br> --- -->
+                <img src="{% static "images/mobile-button-home.png" %}" alt="view"  width="50%" height="50px">
+
             </div>
             <div id="logo"> <em> BIASHARA <br> SMART </em> </div>
         </div>
         <div id="nav-bar">
             <ul>
                 <li>HOME</li>
-                <li>RENT MANAGEMENT</li>
+                <li>RENT</li>
                 <li>LIQUOR</li>
                 <li>EXTRA</li>
             </ul>
