@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <title>Biashara smart</title>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #header{
+                width: 100%;
+                padding: 3px 0 3px 0;
+                /* background-color: whitesmoke; */
+                background-color: blueviolet;
+                height: 60px;
+                color: white;
+            }
+            #mobile-menu-btn{
+                float: left;
+                width: 15%;
+                padding: 0 0 0 10px;
+                border-style: solid;
+                border-width: 0 2px 0 0;
+                border-color: rgb(231, 227, 227);
+            }
+            #logo{
+                float: left;
+                /* height: ; */
+                margin-left: 55px;
+                font-size: x-large;
+            }
+            #nav-bar{
+                width: 100%;
+                padding: 3px 0 2px 0;
+                /* background-color: blueviolet; */
+            }
+            ul li{
+                display: inline;
+                margin: auto 2px;
+                color: rgb(121, 134, 134);
+                /* color: white; */
+                padding: 4px;
+                border-radius: 3px;
+                font-size: medium;
+                font-weight: bold;
+            }
+            ul li:hover{
+                background-color: rgb(245, 126, 126);
+            }
+            #cards{
+                /* background-color: yellow; */
+                width: 100%;
+                height: 820px;
+            }
+            #card{
+                float: left;
+                height: 250px;
+                width: 100%;
+                border-radius: 3px;
+                border-color: blue;
+                border-style: solid;
+                border-width: 5px 0 0 0;
+                box-shadow: 0 2px 2px 2px grey;
+                /* padding: 15px; */
+                margin: 8px 3px 10px 3px;
+            }
+            #card-image{
+                /* width: 100%; */
+                margin: 0 25% 0 40%;
+                /* background-color: yellowgreen; */
+                height: 100px;
+                /* background-color: thistle; */
+            }
+            #card-text-header{
+                font-weight: bold;
+                font-size: x-large;
+                padding: 15px 15px 0 15px;
+                text-align: center;
+            }
+            #card-text-body{
+                text-align: justify;
+                padding: 10px;
+                font-size: large;
+            }
+            #link-to-mobile-app{
+                height: 200px;
+                /* width: 100%; */
+                /* margin: auto; */
+                padding: 30px;
+                font-size: x-large;
+                color: white;
+                text-align: center;
+                margin-top: 2px;
+                background-color: grey;
+            }
+            #playstore-link{
+                padding: 5px;
+                background-color: greenyellow;
+                /* color: white; */
+                color: grey;
+                font-size: large;
+                width: 150px;
+                margin: auto;
+                border-radius: 5px;
+            }
+            #playstore-link:hover{
+                padding: 10px;
+                font-weight: bold;
+                background-color: greenyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div id="mobile-menu-btn">
+                <!-- MENU <br> BTN   -->
+                --- <br> --- <br> ---
+            </div>
+            <div id="logo"> <em> BIASHARA <br> SMART </em> </div>
+        </div>
+        <div id="nav-bar">
+            <ul>
+                <li>HOME</li>
+                <li>RENT MANAGEMENT</li>
+                <li>LIQUOR</li>
+                <li>EXTRA</li>
+            </ul>
+        </div>
+        <div id="cards">
+            <div id="card">
+                <div id="card-image">
+                    <img src="{% static "images/account_icon.png" %}" alt="view"  width="100px" height="90px">
+                </div> 
+                <div id="card-text">
+                    <div id="card-text-header">BUSINESS AUTOMATION</div>
+                    <div id="card-text-body">
+                        Enjoy freedom like never before using our system that automates
+                        the manual business processes in your biashara.
+                    </div>
+                </div>
+            </div>
+            <div id="card">
+                <div id="card-image">
+                    <img src="{% static "images/record_image.png" %}" alt="view"  width="120px" height="90px">
+                </div>
+                <div id="card-text-header">AUTOMATED INVENTORY TRACKING</div>
+                <div id="card-text-body">Get accurate updates of your inventory levels with each sales and purchases made</div>
+            </div>
+            <div id="card">
+                <div id="card-image">
+                    <img src="{% static "images/sales_icon2.png" %}" alt="view"  width="100px" height="90px">
+                </div>
+                <div id="card-text-header">SALES REPORTS</div>
+                <div id="card-text-body">
+                    Get detailed financial reports of how your business is performing regularly.
+                    Know what goods are selling most and those that sell slowly.
+                </div>
+            </div>
+        </div>
+        <div id="link-to-mobile-app">
+            <p>DOWNLOAD OUR MOBILE APP</p>
+            <p>Available for Android. iOS coming soon</p>
+            <div id="playstore-link">
+                BIASHARA SMART
+            </div>
+        </div>
+    </body>
+</html>
