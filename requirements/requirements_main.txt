@@ -1,5 +1,6 @@
 ansible
 Django
+djangorestframework
 Fabric3
 flake8
 gunicorn
