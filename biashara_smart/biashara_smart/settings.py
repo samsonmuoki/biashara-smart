@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'common.apps.CommonConfig',
+    'rest_framework',
     'clients.apps.ClientsConfig',
     'homepage.apps.HomepageConfig',
     'liquorshops.apps.LiquorshopsConfig',

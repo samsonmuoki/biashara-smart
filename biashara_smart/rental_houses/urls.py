@@ -1,10 +1,16 @@
-from django.urls import path
+from django.urls import path, include
+
+from rest_framework import routers
 
 from . import views
 
 app_name = "rental_houses"
 
+router = routers.DefaultRouter()
+router.register(r'premises_api', views.PremisesViewset)
+
 urlpatterns = [
+    path('', include(router.urls)),
     path('', views.index, name="rental_houses_home"),
     path('my-premises/', views.my_premises, name="my_property"),
     path('add-premises/', views.add_premises, name="add_appartment"),

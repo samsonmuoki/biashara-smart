@@ -5,10 +5,19 @@ from django.contrib.auth import (
     # get_user_model
 )
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets
+# from rest_framework import permissions
+from .serializers import PremisesSerializer
 
 from .forms import PremisesForm, UnitForm, RentPaymentForm
 from .models import Premises, Unit, RentPayment
 from clients.models import Client
+
+
+class PremisesViewset(viewsets.ModelViewSet):
+    """Premises API endpoint."""
+    queryset = Premises.objects.all()
+    serializer_class = PremisesSerializer
 
 
 def index(request):
