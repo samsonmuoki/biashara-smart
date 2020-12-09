@@ -9,8 +9,8 @@ from clients.models import Client
 def home(request):
     """Home page view."""
     return render(
-        # request, 'homepage/home.html',
-        request, 'homepage/index.html',
+        request, 'homepage/home.html',
+        # request, 'homepage/index.html',
     )
 
 

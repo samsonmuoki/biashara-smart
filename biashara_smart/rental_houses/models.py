@@ -57,6 +57,14 @@ class Premises(AbstractBase, models.Model):
         """String to represent a premises."""
         return f"{self.name} -- {self.owner}"
 
+    @property
+    def units(self):
+        """Get units in this premises."""
+        uns = Unit.objects.filter(
+            premises=self.id
+        )
+        return uns
+
 
 class Unit(AbstractBase, models.Model):
     """A single house/unit for rent."""

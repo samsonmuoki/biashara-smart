@@ -2,12 +2,13 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from . import views
+from . import views, models
 
 app_name = "rental_houses"
 
 router = routers.DefaultRouter()
-router.register(r'premises_api', views.PremisesViewset)
+router.register(r'premises_api', views.PremisesViewSet,
+                basename=models.Premises)
 
 urlpatterns = [
     path('', include(router.urls)),

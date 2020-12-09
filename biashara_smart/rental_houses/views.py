@@ -6,18 +6,34 @@ from django.contrib.auth import (
 )
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets
-# from rest_framework import permissions
-from .serializers import PremisesSerializer
+from rest_framework import permissions
+from rest_framework.decorators import APIView
+from .serializers import PremisesSerializer, UnitSerializer
 
 from .forms import PremisesForm, UnitForm, RentPaymentForm
 from .models import Premises, Unit, RentPayment
 from clients.models import Client
 
 
-class PremisesViewset(viewsets.ModelViewSet):
+class PremisesViewSet(viewsets.ModelViewSet, APIView):
     """Premises API endpoint."""
-    queryset = Premises.objects.all()
+
+    def get_queryset(self):
+        """Get premises belonging to the logged in user."""
+        user = self.request.user
+        owner = Client.objects.get(user=user)
+        premises = Premises.objects.filter(owner=owner)
+        return premises
+
     serializer_class = PremisesSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class UnitViewSet(viewsets.ModelViewSet):
+    """API endpoint for managing premises units."""
+    queryset = Unit.objects.all()
+    serializer_class = UnitSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 def index(request):
