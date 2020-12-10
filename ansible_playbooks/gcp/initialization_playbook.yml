@@ -162,6 +162,12 @@
 
     - name: Create virtualenv
       command: /usr/local/bin/virtualenv project/venv
+    
+    - name: Copy requirements.txt to server
+      copy:
+        src: /home/sam/Desktop/Biashara/biashara-smart/requirements/
+        dest: /home/sam/project/
+        mode: 0766
 
     - name: Installing requirements
       pip:

@@ -1,6 +1,7 @@
 ansible
 Django
 djangorestframework
+django-filter
 Fabric3
 flake8
 gunicorn
