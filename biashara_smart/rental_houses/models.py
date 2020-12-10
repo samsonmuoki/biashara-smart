@@ -100,7 +100,6 @@ class Unit(AbstractBase, models.Model):
 class RentPayment(AbstractBase, models.Model):
     """Rent Payment."""
 
-    # building = models.ForeignKey(Building, on_delete=models.PROTECT)
     unit = models.ForeignKey(Unit, on_delete=models.PROTECT)
     month = models.PositiveIntegerField(
         default=1, choices=MONTH_CHOICES, null=True
@@ -121,7 +120,7 @@ class RentPayment(AbstractBase, models.Model):
 
     def __str__(self):
         """Represent a rent payment."""
-        return f"{self.house}: {self.amount_paid} -> {self.date_paid}"
+        return f"{self.unit}: {self.amount_paid} -> {self.date_paid}"
 
     def month_year(self):
         """Return a datetime object for the payment using month and year."""
@@ -137,5 +136,22 @@ class ExpensePayment(AbstractBase, models.Model):
     expense_type = models.CharField(
         max_length=20, choices=EXPENSE_TYPES, null=False
     )
-    provider = models.CharField(max_length=50, null=True)
+    provider = models.CharField(max_length=50, null=True)  # eg KPLC,
     date_paid = models.DateField(auto_now_add=True, null=True)
+
+
+class RentAccount(AbstractBase, models.Model):
+    """Model for tracking the cumulative rent amount paid by each tenant."""
+
+    premises = models.ForeignKey(Premises, on_delete=models.CASCADE)
+    account_name = models.CharField(max_length=250, null=True, blank=True)
+    tenant_id_no = models.CharField(
+        max_length=255)  # acts as the account number
+    amount = models.DecimalField(
+        max_digits=19, decimal_places=2, default=0.00
+    )
+
+    class Meta:
+        """."""
+
+        unique_together = ['premises', 'tenant_id_no']

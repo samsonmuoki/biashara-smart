@@ -8,14 +8,25 @@ from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework.decorators import APIView
-from .serializers import PremisesSerializer, UnitSerializer
+from .serializers import (
+    PremisesSerializer, UnitSerializer, RentPaymentSerializer,
+    RentAccountSerializer,
+)
 
 from .forms import PremisesForm, UnitForm, RentPaymentForm
-from .models import Premises, Unit, RentPayment
+from .models import Premises, Unit, RentPayment, RentAccount
+from common.views import AbstractBaseFilterViewset
+from .filters import (
+    UnitFilter, PremisesFilter, RentPaymentFilter, RentAccountFilter
+)
+
+
 from clients.models import Client
 
 
-class PremisesViewSet(viewsets.ModelViewSet, APIView):
+class PremisesViewSet(
+    viewsets.ModelViewSet, AbstractBaseFilterViewset, APIView,
+):
     """Premises API endpoint."""
 
     def get_queryset(self):
@@ -27,13 +38,60 @@ class PremisesViewSet(viewsets.ModelViewSet, APIView):
 
     serializer_class = PremisesSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_class = PremisesFilter
 
 
-class UnitViewSet(viewsets.ModelViewSet):
+class UnitViewSet(viewsets.ModelViewSet, AbstractBaseFilterViewset, APIView):
     """API endpoint for managing premises units."""
-    queryset = Unit.objects.all()
+
+    def get_queryset(self):
+        """Get units belonging to premises owned by the user."""
+        user = self.request.user
+        owner = Client.objects.get(user=user)
+        units = Unit.objects.filter(premises__owner=owner)
+        return units
+
     serializer_class = UnitSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_class = UnitFilter
+
+
+class RentPaymentViewSet(
+    viewsets.ModelViewSet, AbstractBaseFilterViewset, APIView
+):
+    """Api endpoint for managing rental payments."""
+
+    def get_queryset(self):
+        """Get rent paymentd for units in premises owner by the user."""
+        user = self.request.user
+        owner = Client.objects.get(user=user)
+        rent_payments = RentPayment.objects.filter(
+            unit__premises__owner=owner
+        )
+        return rent_payments
+
+    serializer_class = RentPaymentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filterset_class = RentPaymentFilter
+
+
+class RentAccountViewSet(
+    viewsets.ModelViewSet, AbstractBaseFilterViewset, APIView
+):
+    """Api endpoint for managing rent accounts."""
+
+    def get_queryset(self):
+        """."""
+        user = self.request.user
+        owner = Client.objects.get(user=user)
+        rent_accounts = RentAccount.objects.filter(
+            premises__owner=owner
+        )
+        return rent_accounts
+
+    serializer_class = RentAccountSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filterset_class = RentAccountFilter
 
 
 def index(request):
@@ -43,7 +101,7 @@ def index(request):
     )
 
 
-@login_required
+@ login_required
 def my_premises(request):
     """List the premises a client owns."""
     user = get_user(request)
@@ -58,7 +116,7 @@ def my_premises(request):
     )
 
 
-@login_required
+@ login_required
 def add_premises(request):
     """Add appartment View.
 
@@ -95,7 +153,7 @@ def add_premises(request):
     )
 
 
-@login_required
+@ login_required
 def view_premises(request, premises_id):
     """View a single premises."""
     user = get_user(request)
@@ -111,7 +169,7 @@ def view_premises(request, premises_id):
     return render(request, 'rental_houses/view_premises.html', context)
 
 
-@login_required
+@ login_required
 def add_house_to_premises(request, premises_id):
     """Add house to a premises."""
     user = get_user(request)
@@ -149,7 +207,7 @@ def add_house_to_premises(request, premises_id):
     return render(request, "rental_houses/add_house.html", context)
 
 
-@login_required
+@ login_required
 def view_premises_units(request, premises_id):
     """View houses in a certain premises."""
     user = get_user(request)
@@ -166,7 +224,7 @@ def view_premises_units(request, premises_id):
     )
 
 
-@login_required
+@ login_required
 def view_single_unit(request, premises_id, unit_id):
     """."""
     user = get_user(request)
@@ -182,7 +240,7 @@ def view_single_unit(request, premises_id, unit_id):
     )
 
 
-@login_required
+@ login_required
 def add_rent_payment(request, premises_id, unit_id):
     """Record a rental payment."""
     user = get_user(request)

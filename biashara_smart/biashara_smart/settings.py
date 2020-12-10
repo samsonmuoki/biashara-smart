@@ -43,11 +43,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'common.apps.CommonConfig',
     'rest_framework',
+    'django_filters',
     'clients.apps.ClientsConfig',
     'homepage.apps.HomepageConfig',
     'liquorshops.apps.LiquorshopsConfig',
     'rental_houses.apps.RentalHousesConfig',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

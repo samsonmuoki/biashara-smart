@@ -9,6 +9,15 @@ app_name = "rental_houses"
 router = routers.DefaultRouter()
 router.register(r'premises_api', views.PremisesViewSet,
                 basename=models.Premises)
+router.register(
+    r'units_api', views.UnitViewSet, basename=models.Unit
+)
+router.register(
+    r'rent_payments_api', views.RentPaymentViewSet, basename=models.RentPayment
+)
+router.register(
+    r'rent_accounts_api', views.RentAccountViewSet, basename=models.RentAccount
+)
 
 urlpatterns = [
     path('', include(router.urls)),
