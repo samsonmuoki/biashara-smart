@@ -40,17 +40,25 @@ class PremisesViewSet(
             premises_type = serializer.validated_data.get('premises_type')
             building_type = serializer.validated_data.get('building_type')
 
-            premises = Premises.objects.create(
+            data = {
+                'name': name,
+                'location': location,
+                'premises_type': premises_type,
+                'building_type': building_type,
+                'owner': owner.id,
+            }
+
+            Premises.objects.create(
                 owner=owner,
                 name=name,
                 location=location,
                 premises_type=premises_type,
-                building_type=building_type
+                building_type=building_type,
             )
 
             return Response(
                 status=status.HTTP_201_CREATED,
-                # data=premises
+                data=data,
             )
 
     def get_queryset(self):
