@@ -5,8 +5,8 @@ from django.contrib.auth import (
     # get_user_model
 )
 from django.contrib.auth.decorators import login_required
-from rest_framework import viewsets
-from rest_framework import permissions
+from rest_framework import viewsets, permissions, status
+from rest_framework.response import Response
 from rest_framework.decorators import APIView
 from .serializers import (
     PremisesSerializer, UnitSerializer, RentPaymentSerializer,
@@ -28,6 +28,30 @@ class PremisesViewSet(
     viewsets.ModelViewSet, AbstractBaseFilterViewset, APIView,
 ):
     """Premises API endpoint."""
+
+    def create(self, request):
+        """Override default create."""
+        user = request.user
+        owner = Client.objects.get(user=user)
+        serializer = PremisesSerializer(data=request.data)
+        if serializer.is_valid():
+            name = serializer.validated_data.get('name')
+            location = serializer.validated_data.get('location')
+            premises_type = serializer.validated_data.get('premises_type')
+            building_type = serializer.validated_data.get('building_type')
+
+            premises = Premises.objects.create(
+                owner=owner,
+                name=name,
+                location=location,
+                premises_type=premises_type,
+                building_type=building_type
+            )
+
+            return Response(
+                status=status.HTTP_201_CREATED,
+                # data=premises
+            )
 
     def get_queryset(self):
         """Get premises belonging to the logged in user."""
