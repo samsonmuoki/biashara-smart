@@ -29,38 +29,6 @@ class PremisesViewSet(
 ):
     """Premises API endpoint."""
 
-    def create(self, request):
-        """Override default create."""
-        user = request.user
-        owner = Client.objects.get(user=user)
-        serializer = PremisesSerializer(data=request.data)
-        if serializer.is_valid():
-            name = serializer.validated_data.get('name')
-            location = serializer.validated_data.get('location')
-            premises_type = serializer.validated_data.get('premises_type')
-            building_type = serializer.validated_data.get('building_type')
-
-            data = {
-                'name': name,
-                'location': location,
-                'premises_type': premises_type,
-                'building_type': building_type,
-                'owner': owner.id,
-            }
-
-            Premises.objects.create(
-                owner=owner,
-                name=name,
-                location=location,
-                premises_type=premises_type,
-                building_type=building_type,
-            )
-
-            return Response(
-                status=status.HTTP_201_CREATED,
-                data=data,
-            )
-
     def get_queryset(self):
         """Get premises belonging to the logged in user."""
         user = self.request.user

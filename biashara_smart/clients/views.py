@@ -8,9 +8,26 @@ from django.http import (
     HttpResponse,
 )
 from django.contrib.auth import login, authenticate, logout
+from rest_framework import viewsets, permissions
+from rest_framework.decorators import APIView
 
 from .forms import ClientSignUpForm, ClientLoginForm
 from .models import Client
+from .serializers import OwnerSerializer
+
+
+class OwnerViewSet(viewsets.ModelViewSet, APIView):
+    """Serialize the logged in user as a business client."""
+
+    def get_queryset(self):
+        """Get the logged in client."""
+        user = self.request.user
+        owners = Client.objects.filter(user=user)
+
+        return owners
+
+    serializer_class = OwnerSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 def client_signup(request):
